@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Garlito.js - Shoutcast Player</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet">
+
+    <!-- Garlito CSS -->
+    <link rel="stylesheet" href="css/garlito.min.css">
+    <!--Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+
+
+</head>
+<body style="background:#34495e;">
+
+<div style="margin-top:15%;text-align:center;">
+    <h1 style="color:white;text-align:center;font-family: 'Raleway', sans-serif;letter-spacing:5px;font-weight:300; font-size:50px;  ">Garlito.js</h1>
+    <p style="color:white;text-align:center;font-family: 'Raleway', sans-serif;letter-spacing:5px;font-weight:300; font-size:18px;  ">A simple shoutcast player.</p>
+
+    <button id="ListenButton" style="margin-top:40px;background:#2ecc71;width:200px;height:60px;border-radius:30px; font-weight:bold;border:0;color:#34495e;font-size:17px;"> Listen Now</button>
+</div>
+
+<div id="yourplayer"></div>
+
+<!-- Jquery 3.3.1 -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<!-- Howler Lib -->
+<script src="js/howler.min.js" ></script>
+<!-- Garlito JS -->
+<script type="text/javascript" src="js/garlito.min.js"></script>
+
+<script>
+    $( "#yourplayer" ).garlitoPlayer({
+        ip: "149.56.147.197",
+        port: "9247",
+        volume: 1,
+        facebookUrl: "https://facebook.com/fabricradio",
+        instagramUrl: "https://instagram.com",
+        radioName : "Fabric Radio",
+        autoplay: true,
+        popup:true,
+        lastFmApiKey:"85d4e735d8374226a892f97260219982",
+        listenButtonId:"#ListenButton"
+    });
+</script>
+
+</body>
+</html>
