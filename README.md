@@ -1,6 +1,6 @@
 # Garlito.js 
 
-Garlito.js is a simple shoutcast radio player.  You can check the [demo]https://garlito.fabricradio.com/) version.
+Garlito.js is a simple shoutcast radio player.  You can check the [demo](https://garlito.fabricradio.com/) version.
 
 ## Demo
 
