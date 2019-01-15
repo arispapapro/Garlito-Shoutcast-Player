@@ -217,9 +217,9 @@
 
         var song = data.streams[0].songtitle;
 
-        song = song.split(" - ");
+       // song = song.split(" - ");
 
-        song = song[1] + " - " + song[2];
+        //song = song[1] + " - " + song[2];
 
         var currentSong =song;
 
@@ -236,9 +236,9 @@
 
             var song = data.streams[0].songtitle;
 
-            song = song.split(" - ");
+            //song = song.split(" - ");
 
-            song = song[1] + " - " + song[2];
+            //song = song[1] + " - " + song[2];
 
             var currentSong =song;
 
