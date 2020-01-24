@@ -38,7 +38,7 @@ You can check both the popup and static version of the player inside the demo fo
 ```html
 <script>
     $( "#yourplayer" ).garlitoPlayer({
-        ip: "149.56.147.197",
+        ip: "x.x.x.x",
         port: "9247",
         volume: 1,
         facebookUrl: "https://facebook.com/fabricradio",
