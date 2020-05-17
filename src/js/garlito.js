@@ -211,9 +211,8 @@
             }
         });
     }
-
     // First Fetch of the data
-    $.getJSON('https://cors-anywhere.herokuapp.com/' + statisticsUrl, function(data) {
+    $.getJSON(statisticsUrl, function(data) {
 
         var song = data.streams[0].songtitle;
 
@@ -229,10 +228,9 @@
 
         searchSong(filterSongTitle(currentSong));
     });
-
     // Every 5 seconds refresh and calls the api to fetch new data
     setInterval(function(){
-        $.getJSON('https://cors-anywhere.herokuapp.com/' + statisticsUrl, function(data) {
+        $.getJSON(statisticsUrl, function(data) {
 
             var song = data.streams[0].songtitle;
 
