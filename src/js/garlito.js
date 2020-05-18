@@ -28,7 +28,7 @@
 
 
 
-        var htmlPlayer = '<div class="garlito-player"> <div id="garlito-close"><img src="img/close-gray.svg"></div><div class="container-fluid"> <div class="row"> <div class="brand col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 height"> <div class="branding"> <div class="logo-holder"> <div class="garlito-logo"> <img src="' + settings.logoUrl +'" alt="Fabric Radio"> </div></div><div class="name-holder"> <div class="name">'+ settings.radioName + '</div></div><div class="social-media"> <a id="garlitoFacebookUrl" href="' + settings.facebookUrl + '" target="_blank"><img src="img/facebook.svg"></a> <a id="garlitoInstagramUrl" href="'+ settings.instagramUrl + '" target="_blank"><img src="img/instagram.svg"></a> </div><div class="garlito-cover-mobile"> <img width="60" height="60" src="img/no-cover.jpg" id="garlito-cover-mobile"> </div><div class="play-settings"> <div class="play-pause item"> <img id="garlito-play" alt="Play" src="img/play-gray.svg"> <img id="garlito-pause" alt="Pause" src="img/pause-gray.svg"> </div><div class="volume item"> <input type="range" min="0" max="100" value="" class="slider" id="garlito-volume-slider"> </div></div><div class="garlito-cover"> <img id="garlito-cover" width="60" height="60" src="img/no-cover.jpg" id=""> </div><div class="radio-title"> <span class="now-playing">'+settings.nowPlayingText+'<span> <span id="garlito-currentSong"></span> </div></div></div></div></div></div>';
+        var htmlPlayer = '<div class="garlito-player"> <div id="garlito-close"><img src="img/close-gray.svg"></div><div class="container-fluid"> <div class="row"> <div class="brand col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 height"> <div class="branding"> <div class="logo-holder"> <div class="garlito-logo"> <img src="' + settings.logoUrl +'" alt="Fabric Radio"> </div></div><div class="name-holder"> <div class="name">'+ settings.radioName + '</div></div><div class="social-media"> <a id="garlitoFacebookUrl" href="' + settings.facebookUrl + '" target="_blank"><img src="img/facebook.svg"></a> <a id="garlitoInstagramUrl" href="'+ settings.instagramUrl + '" target="_blank"><img src="img/instagram.svg"></a> </div><div class="garlito-cover-mobile"> <img width="60" height="60" src="img/no-cover.jpg" id="garlito-cover-mobile"> </div><div class="play-settings"> <div class="play-pause item"> <img id="garlito-play" alt="Play" src="img/play-gray.svg"> <img id="garlito-pause" alt="Pause" src="img/pause-gray.svg"> </div><div class="volume item"> <input type="range" min="0" max="100" value="" class="slider" id="garlito-volume-slider"> </div></div><div class="garlito-cover"> <img id="garlito-cover" width="60" height="60" src="img/no-cover.jpg" id=""> </div><div class="radio-title"> <span class="now-playing">'+settings.nowPlayingText+'<span> <span id="garlito-currentSong"></span> <span id="garlito-servertitle"></span></div></div></div></div></div></div>';
 
         $(_this).html(htmlPlayer);
 
@@ -64,6 +64,7 @@
     var pause_element = $("#garlito-pause");
     var volume_element = $("#garlito-volume-slider");
     var current_song = $("#garlito-currentSong");
+    var server_title = $("#garlito-servertitle");
     var cover_image = $("#garlito-cover");
     var cover_image_mobile = $("#garlito-cover-mobile");
     var close_button = $("#garlito-close");
@@ -191,6 +192,11 @@
 
     }
 
+    // Comments go here
+    function returningSameString(string){
+        return string;
+    }
+
     //Returns the cover's image path of a song
     function searchSong(song){
         $.getJSON('https://ws.audioscrobbler.com/2.0/?method=track.search&track=' + song +'&api_key=' + settings.lastFmApiKey +'&format=json', { get_param: 'data' }, function(data) {
@@ -212,25 +218,40 @@
         });
     }
     // First Fetch of the data
-    $.getJSON(statisticsUrl, function(data) {
+    $.getJSON('https://cors-anywhere.herokuapp.com/' + statisticsUrl, function(data) {
 
         var song = data.streams[0].songtitle;
+        console.log(song);
+
+        var currentlisteners = data.streams[0].currentlisteners;
+
+        var servertitle = data.streams[0].servertitle;
+        console.log(servertitle);
 
        // song = song.split(" - ");
 
         //song = song[1] + " - " + song[2];
 
-        var currentSong =song;
+        var currentSong = song;
+        console.log(currentSong);
+
+        var serverTitle = servertitle;
+        console.log(serverTitle);
 
         current_song.empty();
 
         current_song.append(filterSongTitle(currentSong));
 
-        searchSong(filterSongTitle(currentSong));
+        server_title.empty();
+
+        server_title.append(returningSameString(serverTitle));
+
+        //searchSong(filterSongTitle(currentSong));
     });
+    /*
     // Every 5 seconds refresh and calls the api to fetch new data
     setInterval(function(){
-        $.getJSON(statisticsUrl, function(data) {
+        $.getJSON('https://cors-anywhere.herokuapp.com/' + statisticsUrl, function(data) {
 
             var song = data.streams[0].songtitle;
 
@@ -244,10 +265,10 @@
 
             current_song.append(filterSongTitle(currentSong));
 
-            searchSong(filterSongTitle(currentSong));
+            //searchSong(filterSongTitle(currentSong));
         });
     }, 5000);
-
+    */
     return _this;
 
     };
