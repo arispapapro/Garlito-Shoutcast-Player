@@ -9,11 +9,22 @@
     <!--Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-
+    <style>
+        #myVideo {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          min-width: 100%;
+          min-height: 100%;
+          z-index: -1;
+        }
+    </style>
 
 </head>
 <body style="background:#000000;">
-
+<video autoplay="" muted="" loop="" id="myVideo">
+    <source src="https://s3.us-east-2.amazonaws.com/infascination-public-ohio/img/hero.mp4" type="video/mp4">
+</video>
 <div style="margin-top:15%;text-align:center;">
     <h1 style="color:white;text-align:center;font-family: 'Raleway', sans-serif;letter-spacing:5px;font-weight:300; font-size:50px;">metro-radio</h1>
     <p style="color:white;text-align:center;font-family: 'Raleway', sans-serif;letter-spacing:5px;font-weight:300; font-size:18px;">acoustical paradise</p>
