@@ -3,7 +3,7 @@
 Garlito.js is a simple shoutcast radio player.  You can check the [demo](https://garlito.fabricradio.com/) version.
 
 
-![alt text](https://garlito.fabricradio.com/image.png "Garlito.js Demo Popup")
+![alt text](https://i.ibb.co/584mn6C/asdasdasdasd.png "Garlito.js Demo Popup")
 
 
 ## Demo
